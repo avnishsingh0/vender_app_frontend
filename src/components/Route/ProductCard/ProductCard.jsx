@@ -61,8 +61,8 @@ const ProductCard = ({ data,isEvent }) => {
 
   return (
     <>
-      <div className="w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
-        <div className="flex justify-end"></div>
+  
+     <div className="w-full h-[370px]  bg-white rounded-lg shadow-sm p-3 relative cursor-pointer hover:shadow-lg ">
         <Link to={`${isEvent === true ? `/product/${data._id}?isEvent=true` : `/product/${data._id}`}`}>
           <img
             src={`${backend_url}${data.images && data.images[0]}`}
@@ -85,13 +85,13 @@ const ProductCard = ({ data,isEvent }) => {
           <div className="py-2 flex items-center justify-between">
             <div className="flex">
               <h5 className={`${styles.productDiscountPrice}`}>
-                {data.originalPrice === 0
+              ₹ {data.originalPrice === 0
                   ? data.originalPrice
                   : data.discountPrice}
-                $
+                
               </h5>
               <h4 className={`${styles.price}`}>
-                {data.originalPrice ? data.originalPrice + " $" : null}
+              ₹ {data.originalPrice ? data.originalPrice  : null}
               </h4>
             </div>
             <span className="font-[400] text-[17px] text-[#68d284]">
@@ -136,6 +136,7 @@ const ProductCard = ({ data,isEvent }) => {
           {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
         </div>
       </div>
+  
     </>
   );
 };

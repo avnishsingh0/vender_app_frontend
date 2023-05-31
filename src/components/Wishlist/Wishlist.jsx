@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFromWishlist } from "../../Redux/Action/wishlist";
 import { backend_url } from "../../server";
 import { addTocart } from "../../Redux/Action/cart";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const Wishlist = ({ setOpenWishlist }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -26,7 +27,7 @@ const Wishlist = ({ setOpenWishlist }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10">
-      <div className="fixed top-0 right-0 h-full w-[80%] overflow-y-scroll 800px:w-[25%] bg-white flex flex-col justify-between shadow-sm">
+      <div className="fixed top-0 right-0 h-full w-full sm:w-1/2 lg:w-1/4 bg-white flex flex-col overflow-y-scroll justify-between shadow-sm hide-scrollbar">
         {wishlist && wishlist.length === 0 ? (
           <div className="w-full h-screen flex items-center justify-center">
             <div className="flex w-full justify-end pt-5 pr-5 fixed top-3 right-3">
@@ -79,23 +80,24 @@ const CartSingle = ({ data,removeFromWishlistHandler,addToCartHandler }) => {
   return (
     <div className="border-b p-4">
       <div className="w-full 800px:flex items-center">
-        <RxCross1 className="cursor-pointer 800px:mb-['unset'] 800px:ml-['unset'] mb-2 ml-2"
+        <RxCross1 size={30} className="cursor-pointer 800px:mb-['unset'] 800px:ml-['unset'] mr-1"
         onClick={() => removeFromWishlistHandler(data)}
         />
         <img
           src={`${backend_url}${data?.images[0]}`}
           alt=""
-          className="w-[130px] h-min ml-2 mr-2 rounded-[5px]"
+          className="w-[80px] h-min ml-2 mr-2 rounded-[5px] object-cover"
         />
 
         <div className="pl-[5px]">
-          <h1>{data.name}</h1>
-          <h4 className="font-[600] pt-3 800px:pt-[3px] text-[17px] text-[#d02222] font-Roboto">
-            US${totalPrice}
+        <h1 className="text-[12px] font-semibold">{data.name}</h1>
+
+        <h4 className="font-semibold text-base text-[#d02222]">
+            IN ₹{totalPrice}
           </h4>
         </div>
         <div>
-          <BsCartPlus size={20} className="cursor-pointer" tile="Add to cart"
+          <FaCartArrowDown size={20} className="cursor-pointer hover:text-red-500" tile="Add to cart"
            onClick={() => addToCartHandler(data)}
           />
         </div>
