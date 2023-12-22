@@ -1,11 +1,15 @@
 import React from "react";
-import styles from "../../../styles/styles";
+
+// internal imports
 import CountDown from "./CountDown.jsx";
 import { backend_url } from "../../../server";
-import { useDispatch, useSelector } from "react-redux";
+import { addTocart } from "../../../Redux/Action/cart";
+
+// third party
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { addTocart } from "../../../Redux/Action/cart";
+import { useDispatch, useSelector } from "react-redux";
+
 const EventCard = ({ active, data }) => {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();

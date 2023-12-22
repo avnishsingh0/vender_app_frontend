@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { RxCross1 } from "react-icons/rx";
-import { IoBagHandleOutline } from "react-icons/io5";
-import { BsCartPlus } from "react-icons/bs";
+
+// internal imports
 import styles from "../../styles/styles";
-import { Link } from "react-router-dom";
-import { AiOutlineHeart } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { removeFromWishlist } from "../../Redux/Action/wishlist";
 import { backend_url } from "../../server";
 import { addTocart } from "../../Redux/Action/cart";
+import { removeFromWishlist } from "../../Redux/Action/wishlist";
+
+// react icons
+import { RxCross1 } from "react-icons/rx";
+import { AiOutlineHeart } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
 import { FaCartArrowDown } from "react-icons/fa";
 
 const Wishlist = ({ setOpenWishlist }) => {
@@ -20,10 +21,10 @@ const Wishlist = ({ setOpenWishlist }) => {
   };
 
   const addToCartHandler = (data) => {
-    const newData = {...data, qty:1};
+    const newData = { ...data, qty: 1 };
     dispatch(addTocart(newData));
     setOpenWishlist(false);
-  }
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10">
@@ -62,7 +63,12 @@ const Wishlist = ({ setOpenWishlist }) => {
               <div className="w-full border-t">
                 {wishlist &&
                   wishlist.map((i, index) => (
-                    <CartSingle key={index} data={i} removeFromWishlistHandler={removeFromWishlistHandler} addToCartHandler={addToCartHandler} />
+                    <CartSingle
+                      key={index}
+                      data={i}
+                      removeFromWishlistHandler={removeFromWishlistHandler}
+                      addToCartHandler={addToCartHandler}
+                    />
                   ))}
               </div>
             </div>
@@ -73,15 +79,17 @@ const Wishlist = ({ setOpenWishlist }) => {
   );
 };
 
-const CartSingle = ({ data,removeFromWishlistHandler,addToCartHandler }) => {
+const CartSingle = ({ data, removeFromWishlistHandler, addToCartHandler }) => {
   const [value, setValue] = useState(1);
   const totalPrice = data.discountPrice * value;
 
   return (
     <div className="border-b p-4">
       <div className="w-full 800px:flex items-center">
-        <RxCross1 size={30} className="cursor-pointer 800px:mb-['unset'] 800px:ml-['unset'] mr-1"
-        onClick={() => removeFromWishlistHandler(data)}
+        <RxCross1
+          size={30}
+          className="cursor-pointer 800px:mb-['unset'] 800px:ml-['unset'] mr-1"
+          onClick={() => removeFromWishlistHandler(data)}
         />
         <img
           src={`${backend_url}${data?.images[0]}`}
@@ -90,15 +98,18 @@ const CartSingle = ({ data,removeFromWishlistHandler,addToCartHandler }) => {
         />
 
         <div className="pl-[5px]">
-        <h1 className="text-[12px] font-semibold">{data.name}</h1>
+          <h1 className="text-[12px] font-semibold">{data.name}</h1>
 
-        <h4 className="font-semibold text-base text-[#d02222]">
+          <h4 className="font-semibold text-base text-[#d02222]">
             IN ₹{totalPrice}
           </h4>
         </div>
         <div>
-          <FaCartArrowDown size={20} className="cursor-pointer hover:text-red-500" tile="Add to cart"
-           onClick={() => addToCartHandler(data)}
+          <FaCartArrowDown
+            size={20}
+            className="cursor-pointer hover:text-red-500"
+            tile="Add to cart"
+            onClick={() => addToCartHandler(data)}
           />
         </div>
       </div>

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { backend_url, server } from "../../server";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import styles from "../../styles/styles";
-import axios from "axios";
-import { getAllProductsShop } from "../../Redux/Action/product";
+
+// internal imports
 import Loader from "../Layout/Loader";
+import styles from "../../styles/styles";
+import { backend_url, server } from "../../server";
+import { getAllProductsShop } from "../../Redux/Action/product";
+
+// third party
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const ShopInfo = ({ isOwner }) => {
-  const [data, setData] = useState({});
+  const [, setData] = useState({});
   const { products } = useSelector((state) => state.products);
   const [isLoading, setIsLoading] = useState(false);
   const { _id } = useParams();

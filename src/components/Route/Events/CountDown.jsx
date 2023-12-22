@@ -1,6 +1,4 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-
 
 const CountDown = ({ data }) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
@@ -10,7 +8,6 @@ const CountDown = ({ data }) => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    
     return () => clearTimeout(timer);
   });
 
@@ -44,14 +41,13 @@ const CountDown = ({ data }) => {
 
   return (
     <div>
-     {timerComponents.length ? (
-  timerComponents.map((component, index) => (
-    <span key={index}>{component}</span>
-  ))
-) : (
-  <span className="text-[red] text-[25px]">Time's Up</span>
-)}
-
+      {timerComponents.length ? (
+        timerComponents.map((component, index) => (
+          <span key={index}>{component}</span>
+        ))
+      ) : (
+        <span className="text-[red] text-[25px]">Time's Up</span>
+      )}
     </div>
   );
 };

@@ -1,14 +1,19 @@
 import React, { useState } from "react";
-import { RxCross1 } from "react-icons/rx";
-import { IoBagHandleOutline } from "react-icons/io5";
-import { HiOutlineMinus, HiPlus } from "react-icons/hi";
+
+// internal imports
 import styles from "../../styles/styles";
-import { Link } from "react-router-dom";
 import { backend_url } from "../../server";
-import { useDispatch, useSelector } from "react-redux";
 import { addTocart, removeFromCart } from "../../Redux/Action/cart";
+
+// third party library
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+// react icons
+import { RxCross1 } from "react-icons/rx";
 import { FaCartArrowDown } from "react-icons/fa";
+import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 
 const Cart = ({ setOpenCart }) => {
@@ -30,7 +35,7 @@ const Cart = ({ setOpenCart }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10 ">
-     <div className="fixed top-0 right-0 h-full w-full sm:w-1/2 lg:w-1/4 bg-white flex flex-col overflow-y-scroll justify-between shadow-sm hide-scrollbar">
+      <div className="fixed top-0 right-0 h-full w-full sm:w-1/2 lg:w-1/4 bg-white flex flex-col overflow-y-scroll justify-between shadow-sm hide-scrollbar">
         {cart && cart.length === 0 ? (
           <div className="flex items-center justify-center h-screen">
             <div className="fixed top-3 right-3">
@@ -77,15 +82,14 @@ const Cart = ({ setOpenCart }) => {
             <div className="px-5 mb-2">
               {/* checkout buttons */}
               <Link to="/checkout">
-              <button className="relative  inline-flex items-center justify-center px-9 py-3 ml-5 text-white transition-all duration-300 ease-in-out bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-600">
-                <h1 className="flex items-center font-medium cursor-pointer">
-                Checkout ₹{totalPrice}
-                  <MdOutlineShoppingCartCheckout className="ml-10  font-bold"  />
-                </h1>
-              </button>
+                <button className="relative  inline-flex items-center justify-center px-9 py-3 ml-5 text-white transition-all duration-300 ease-in-out bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-600">
+                  <h1 className="flex items-center font-medium cursor-pointer">
+                    Checkout ₹{totalPrice}
+                    <MdOutlineShoppingCartCheckout className="ml-10  font-bold" />
+                  </h1>
+                </button>
               </Link>
             </div>
-            
           </>
         )}
       </div>

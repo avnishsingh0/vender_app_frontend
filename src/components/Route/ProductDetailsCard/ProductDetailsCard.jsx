@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
-import {
-  AiFillHeart,
-  AiOutlineHeart,
-  AiOutlineMessage,
-  AiOutlineShoppingCart,
-} from "react-icons/ai";
-import { RxCross1 } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import { backend_url } from "../../../server";
+
+// third party
 import styles from "../../../styles/styles";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import { backend_url } from "../../../server";
 import { addTocart } from "../../../Redux/Action/cart";
 import {
   addToWishlist,
   removeFromWishlist,
 } from "../../../Redux/Action/wishlist";
-import { MdSpaceDashboard } from "react-icons/md";
+
+// internal imports
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+// react-icons
+import { RxCross1 } from "react-icons/rx";
 import { FaCartPlus } from "react-icons/fa";
 import { BsMessenger } from "react-icons/bs";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const ProductDetailsCard = ({ setOpen, data }) => {
   const { cart } = useSelector((state) => state.cart);
@@ -26,7 +26,6 @@ const ProductDetailsCard = ({ setOpen, data }) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [click, setClick] = useState(false);
-  //   const [select, setSelect] = useState(false);
 
   const handleMessageSubmit = () => {};
 

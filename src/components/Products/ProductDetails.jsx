@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from "react";
-import {
-  AiFillHeart,
-  AiOutlineHeart,
-  AiOutlineMessage,
-  AiOutlineShoppingCart,
-} from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { getAllProductsShop } from "../../Redux/Action/product";
-import { backend_url, server } from "../../server";
-import styles from "../../styles/styles";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../Redux/Action/wishlist";
-import { addTocart } from "../../Redux/Action/cart";
-import { toast } from "react-toastify";
+
+// internal imports
 import Ratings from "./Ratings";
+import styles from "../../styles/styles";
+import { backend_url, server } from "../../server";
+import { addTocart } from "../../Redux/Action/cart";
+import { getAllProductsShop } from "../../Redux/Action/product";
+import { addToWishlist, removeFromWishlist } from "../../Redux/Action/wishlist";
+
+// third party
 import axios from "axios";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+// react icons
 import { FaCartPlus } from "react-icons/fa";
 import { BsMessenger } from "react-icons/bs";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+
 const ProductDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
   const { cart } = useSelector((state) => state.cart);
@@ -86,10 +85,9 @@ const ProductDetails = ({ data }) => {
       0
     );
 
-  const avg =  totalRatings / totalReviewsLength || 0;
+  const avg = totalRatings / totalReviewsLength || 0;
 
   const averageRating = avg.toFixed(2);
-
 
   const handleMessageSubmit = async () => {
     if (isAuthenticated) {
@@ -128,9 +126,7 @@ const ProductDetails = ({ data }) => {
                 <div className="w-full flex items-center ">
                   {data &&
                     data.images.map((i, index) => (
-                      <div
-                        className={``}
-                      >
+                      <div className={``}>
                         <img
                           src={`${backend_url}${i}`}
                           alt=""
@@ -197,15 +193,15 @@ const ProductDetails = ({ data }) => {
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center pt-8 justify-between">
-                <button
-                 onClick={() => addToCartHandler(data._id)}
-                  className="relative inline-flex items-center justify-center px-4 py-2 mt-5 ml-[-5px] text-white transition-all duration-300 ease-in-out border-2 border-red-500 rounded-full hover:bg-red-100  focus:outline-none focus:bg-red-200"
-                >
-                  <h1 className="flex items-center font-medium cursor-pointer text-black">
-                    Add to cart <FaCartPlus className="ml-1" />
-                  </h1>
-                </button>
-               
+                  <button
+                    onClick={() => addToCartHandler(data._id)}
+                    className="relative inline-flex items-center justify-center px-4 py-2 mt-5 ml-[-5px] text-white transition-all duration-300 ease-in-out border-2 border-red-500 rounded-full hover:bg-red-100  focus:outline-none focus:bg-red-200"
+                  >
+                    <h1 className="flex items-center font-medium cursor-pointer text-black">
+                      Add to cart <FaCartPlus className="ml-1" />
+                    </h1>
+                  </button>
+
                   <button
                     onClick={handleMessageSubmit}
                     className="relative  inline-flex mt-5 items-center justify-center px-4 py-2 text-white transition-all duration-300 ease-in-out bg-red-600 rounded-full hover:bg-red-500 focus:outline-none focus:bg-red-600"
@@ -214,7 +210,7 @@ const ProductDetails = ({ data }) => {
                       Send Message <BsMessenger className="ml-1" />
                     </h1>
                   </button>
-                 
+
                   <Link to={`/shop/preview/${data?.shop._id}`}>
                     <img
                       src={`${backend_url}${data?.shop?.avatar}`}
@@ -232,10 +228,7 @@ const ProductDetails = ({ data }) => {
                       ({averageRating}/5) Ratings
                     </h5>
                   </div>
-            
                 </div>
-               
-               
               </div>
             </div>
           </div>
@@ -260,7 +253,7 @@ const ProductDetailsInfo = ({
   averageRating,
 }) => {
   const [active, setActive] = useState(1);
-console.log(data)
+  console.log(data);
   return (
     <div className="bg-[#f5f6fb] px-3 800px:px-10 py-2 rounded">
       <div className="w-full flex justify-between border-b pt-10 pb-2">
@@ -313,30 +306,29 @@ console.log(data)
       ) : null}
 
       {active === 2 && data && data.reviews ? (
-  <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
-    {data.reviews.length > 0 ? (
-      data.reviews.map((item, index) => (
-        <div className="w-full flex my-2" key={index}>
-          <img
-            src={`${backend_url}/${item.user.avatar}`}
-            alt=""
-            className="w-[50px] h-[50px] rounded-full"
-          />
-          <div className="pl-2">
-            <div className="w-full flex items-center">
-              <h1 className="font-[500] mr-3">{item.user.name}</h1>
-              <Ratings rating={data?.ratings} />
-            </div>
-            <p>{item.comment}</p>
-          </div>
+        <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
+          {data.reviews.length > 0 ? (
+            data.reviews.map((item, index) => (
+              <div className="w-full flex my-2" key={index}>
+                <img
+                  src={`${backend_url}/${item.user.avatar}`}
+                  alt=""
+                  className="w-[50px] h-[50px] rounded-full"
+                />
+                <div className="pl-2">
+                  <div className="w-full flex items-center">
+                    <h1 className="font-[500] mr-3">{item.user.name}</h1>
+                    <Ratings rating={data?.ratings} />
+                  </div>
+                  <p>{item.comment}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <h5>No reviews available for this product.</h5>
+          )}
         </div>
-      ))
-    ) : (
-      <h5>No reviews available for this product.</h5>
-    )}
-  </div>
-) : null}
-
+      ) : null}
 
       {active === 3 && (
         <div className="w-full block 800px:flex p-5">

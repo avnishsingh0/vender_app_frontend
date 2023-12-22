@@ -1,7 +1,11 @@
 import React from "react";
+
+// third party
 import { Link } from "react-router-dom";
-import { navItems } from "../../static/data";
+
+// internal imports
 import styles from "../../styles/styles";
+import { navItems } from "../../static/data";
 
 const Navbar = ({ active }) => {
   return (

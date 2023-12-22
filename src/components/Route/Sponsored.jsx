@@ -1,4 +1,6 @@
 import React from "react";
+
+// internal imports
 import styles from "../../styles/styles";
 
 const Sponsored = () => {

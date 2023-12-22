@@ -1,28 +1,33 @@
-import React, { useState } from "react";
-import {
-  AiOutlineArrowRight,
-  AiOutlineCamera,
-  AiOutlineDelete,
-} from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { backend_url, server } from "../../server";
+import React, { useState, useEffect } from "react";
+
+// internal imports
 import styles from "../../styles/styles";
-import { DataGrid } from "@material-ui/data-grid";
-import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { MdTrackChanges } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
+import { backend_url, server } from "../../server";
+import { getAllOrdersOfUser } from "../../Redux/Action/order";
 import {
   deleteUserAddress,
   loadUser,
   updatUserAddress,
   updateUserInformation,
 } from "../../Redux/Action/user";
-import { Country, State } from "country-state-city";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
+
+// third party
 import axios from "axios";
-import { getAllOrdersOfUser } from "../../Redux/Action/order";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import { DataGrid } from "@material-ui/data-grid";
+import { Country, State } from "country-state-city";
+import { useDispatch, useSelector } from "react-redux";
+
+// react-icons
+import { RxCross1 } from "react-icons/rx";
+import { MdTrackChanges } from "react-icons/md";
+import {
+  AiOutlineArrowRight,
+  AiOutlineCamera,
+  AiOutlineDelete,
+} from "react-icons/ai";
 
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
@@ -30,7 +35,7 @@ const ProfileContent = ({ active }) => {
   const [email, setEmail] = useState(user && user.email);
   const [phoneNumber, setPhoneNumber] = useState(user && user.phoneNumber);
   const [password, setPassword] = useState("");
-  const [avatar, setAvatar] = useState(null);
+  const [, setAvatar] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -65,8 +70,8 @@ const ProfileContent = ({ active }) => {
         withCredentials: true,
       })
       .then((response) => {
-         dispatch(loadUser());
-         toast.success("avatar updated successfully!");
+        dispatch(loadUser());
+        toast.success("avatar updated successfully!");
       })
       .catch((error) => {
         toast.error(error);
@@ -291,7 +296,8 @@ const AllRefundOrders = () => {
     dispatch(getAllOrdersOfUser(user._id));
   }, []);
 
-  const eligibleOrders = orders && orders.filter((item) => item.status === "Processing refund");
+  const eligibleOrders =
+    orders && orders.filter((item) => item.status === "Processing refund");
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
@@ -347,7 +353,7 @@ const AllRefundOrders = () => {
   const row = [];
 
   eligibleOrders &&
-   eligibleOrders.forEach((item) => {
+    eligibleOrders.forEach((item) => {
       row.push({
         id: item._id,
         itemsQty: item.cart.length,
@@ -473,7 +479,7 @@ const ChangePassword = () => {
         setOldPassword("");
         setNewPassword("");
         setConfirmPassword("");
-        toast.success("Password updated successfully!")
+        toast.success("Password updated successfully!");
       })
       .catch((error) => {
         toast.error(error.response.data.message);

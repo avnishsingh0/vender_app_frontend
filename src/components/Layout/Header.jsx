@@ -1,35 +1,39 @@
 import React, { useEffect, useRef, useState } from "react";
+
+// internal imports 
+import Navbar from "./Navbar.jsx";
+import Cart from "../Cart/Cart.jsx";
+import DropDown from "./DropDown.jsx";
 import styles from "../../styles/styles";
-import { Link } from "react-router-dom";
+import { backend_url } from "../../server";
+import Wishlist from "../Wishlist/Wishlist.jsx";
 import { categoriesData } from "../../static/data";
+
+// third party
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+// react icons
 import {
   AiOutlineHeart,
   AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import DropDown from "./DropDown.jsx";
+import { IoIosArrowDown } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { MdSpaceDashboard } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import Navbar from "./Navbar.jsx";
-import { useSelector } from "react-redux";
-import { backend_url } from "../../server";
-import Cart from "../Cart/Cart.jsx";
-import Wishlist from "../Wishlist/Wishlist.jsx";
 import { RxCross1 } from "react-icons/rx";
+
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const { allProducts } = useSelector((state) => state.products);
   const { cart } = useSelector((state) => state.cart);
   const { wishlist } = useSelector((state) => state.wishlist);
   const { isSeller } = useSelector((state) => state.seller);
-
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
-  const [active, setActive] = useState(false);
   const [dropDown, setDropDown] = useState(false);
-
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
   const searchRef = useRef(null);
@@ -46,13 +50,7 @@ const Header = ({ activeHeading }) => {
       );
     setSearchData(filteredProducts);
   };
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 70) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
-  });
+  
   const [isFocused, setIsFocused] = useState(false);
 
   const handleInputFocus = () => {

@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import styles from "../../styles/styles";
-import { Country, State } from "country-state-city";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+
+// internal imports
 import { server } from "../../server";
+import styles from "../../styles/styles";
+
+// third party library
+import axios from "axios";
 import { toast } from "react-toastify";
-import { MdPayments, MdSpaceDashboard } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { MdPayments } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { Country, State } from "country-state-city";
 
 const Checkout = () => {
   const { user } = useSelector((state) => state.user);
