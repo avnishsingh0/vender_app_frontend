@@ -11,7 +11,7 @@ import { Button } from "@material-ui/core";
 import { MdBorderClear } from "react-icons/md";
 import { DataGrid } from "@material-ui/data-grid";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineArrowRight, AiOutlineMoneyCollect } from "react-icons/ai";
+import {  AiOutlineArrowRight, AiOutlineMoneyCollect } from "react-icons/ai";
 
 const DashboardHero = () => {
   const dispatch = useDispatch();

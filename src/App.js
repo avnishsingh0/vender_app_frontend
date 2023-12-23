@@ -70,7 +70,6 @@ const App = () => {
     Store.dispatch(getAllEvents());
     getStripeApikey();
   }, []);
-  console.log(stripeApikey);
   return (
     <>
       <BrowserRouter>

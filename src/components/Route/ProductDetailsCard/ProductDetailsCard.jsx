@@ -118,7 +118,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                   </button>
                 </div>
 
-                {/* <h5 className="text-red-500 mt-5">(50) Sold out</h5> */}
+                <h5 className="text-red-500 mt-5">(50) Sold out</h5>
               </div>
 
               <div className="pt-5 pl-2 pr-2 md:pl-5 md:pr-5">

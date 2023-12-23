@@ -7,7 +7,7 @@ import Header from "../components/Layout/Header";
 
 // third party
 import axios from "axios";
-import { format } from "timeago.js";
+// import { format } from "timeago.js";
 import socketIO from "socket.io-client";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ import { TfiGallery } from "react-icons/tfi";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 
 // end points
-const ENDPOINT = "https://vernderappchatting-production.up.railway.app/";
+const ENDPOINT = "http://localhost:4000";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = () => {
@@ -395,7 +395,7 @@ const SellerInbox = ({
                   </div>
 
                   <p className="text-[12px] text-[#000000d3] pt-1">
-                    {format(item.createdAt)}
+                    {/* {format(item.createdAt)} */}
                   </p>
                 </div>
               )}
