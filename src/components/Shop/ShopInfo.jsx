@@ -32,7 +32,7 @@ const ShopInfo = ({ isOwner }) => {
         console.log(error);
         setIsLoading(false);
       });
-  }, []);
+  }, [_id, dispatch]);
 
   const logoutHandler = async () => {
     axios.get(`${server}/shop/logout`, {

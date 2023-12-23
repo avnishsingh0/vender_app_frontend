@@ -23,7 +23,7 @@ const OrderDetails = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfShop(seller._id));
-  }, [dispatch]);
+  }, [dispatch, seller._id]);
 
   const data = orders && orders.find((item) => item._id === id);
 

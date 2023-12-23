@@ -272,7 +272,7 @@ const MessageList = ({
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    const userId = data.members.find((user) => user != me);
+    const userId = data.members.find((user) => user !== me);
 
     const getUser = async () => {
       try {
@@ -379,6 +379,7 @@ const SellerInbox = ({
                   <img
                     src={`${backend_url}${item.images}`}
                     className="w-[300px] h-[300px] object-cover rounded-[10px] mr-2"
+                    alt="item-img"
                   />
                 )}
                 {item.text !== "" && (
@@ -403,7 +404,6 @@ const SellerInbox = ({
 
       {/* send message input */}
       <form
-        aria-required={true}
         className="p-3 relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >

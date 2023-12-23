@@ -286,7 +286,7 @@ const MessageList = ({
       }
     };
     getUser();
-  }, [me, data]);
+  }, [me, data, setActiveStatus, online]);
 
   return (
     <div
@@ -381,6 +381,7 @@ const SellerInbox = ({
                 <img
                   src={`${backend_url}${item.images}`}
                   className="w-[300px] h-[300px] object-cover rounded-[10px] ml-2 mb-2"
+                  alt="user-img"
                 />
               )}
               {item.text !== "" && (
@@ -404,7 +405,6 @@ const SellerInbox = ({
 
       {/* send message input */}
       <form
-        aria-required={true}
         className="p-3 relative w-full flex justify-between items-center"
         onSubmit={sendMessageHandler}
       >

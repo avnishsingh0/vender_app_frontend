@@ -14,7 +14,7 @@ const BestDeals = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProducts(data));
-  }, [dispatch]);
+  }, [data, dispatch]);
   useEffect(() => {
     const allProductsData = allProducts ? [...allProducts] : [];
     const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);

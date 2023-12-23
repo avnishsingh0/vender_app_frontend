@@ -43,7 +43,7 @@ const AllCoupons = () => {
       .catch((error) => {
         setIsLoading(false);
       });
-  }, [dispatch]);
+  }, [dispatch, seller._id]);
 
   const handleDelete = async (id) => {
     axios
@@ -159,8 +159,8 @@ const AllCoupons = () => {
                 <h5 className="text-[30px] font-Poppins text-center">
                   Create Coupon code
                 </h5>
-                {/* create coupoun code */}
-                <form onSubmit={handleSubmit} aria-required={true}>
+                {/* create coupon code */}
+                <form onSubmit={handleSubmit}>
                   <br />
                   <div>
                     <label className="pb-2">
