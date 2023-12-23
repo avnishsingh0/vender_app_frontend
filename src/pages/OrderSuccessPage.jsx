@@ -1,6 +1,10 @@
 import React from "react";
+
+// internal imports
 import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
+
+// third party
 import Lottie from "react-lottie";
 import animationData from "../assets/lotties_animaitons/107043-success.json";
 

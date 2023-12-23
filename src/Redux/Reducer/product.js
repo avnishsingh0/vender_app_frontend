@@ -2,7 +2,6 @@ import { createReducer } from "@reduxjs/toolkit";
 
 const initialState = {
   isLoading: true,
-  
 };
 
 export const productReducer = createReducer(initialState, {
@@ -20,7 +19,6 @@ export const productReducer = createReducer(initialState, {
     state.success = false;
   },
 
-
   // get all products of shop
   getAllProductsShopRequest: (state) => {
     state.isLoading = true;
@@ -33,7 +31,7 @@ export const productReducer = createReducer(initialState, {
     state.isLoading = false;
     state.error = action.payload;
   },
-  
+
   // delete product of a shop
   deleteProductRequest: (state) => {
     state.isLoading = true;

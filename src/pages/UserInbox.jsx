@@ -1,14 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import Header from "../components/Layout/Header";
-import { useSelector } from "react-redux";
-import socketIO from "socket.io-client";
-import { format } from "timeago.js";
-import { backend_url, server } from "../server";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
-import { TfiGallery } from "react-icons/tfi";
+
+// internal imports
 import styles from "../styles/styles";
+import { backend_url, server } from "../server";
+import Header from "../components/Layout/Header";
+
+// third party
+import axios from "axios";
+import { format } from "timeago.js";
+import socketIO from "socket.io-client";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+// react icons
+import { TfiGallery } from "react-icons/tfi";
+import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
+
+// end points
 const ENDPOINT = "https://vernderappchatting-production.up.railway.app/";
 const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
@@ -21,7 +29,7 @@ const UserInbox = () => {
   const [newMessage, setNewMessage] = useState("");
   const [userData, setUserData] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const [images, setImages] = useState();
+  const [, setImages] = useState();
   const [activeStatus, setActiveStatus] = useState(false);
   const [open, setOpen] = useState(false);
   const scrollRef = useRef(null);

@@ -18,8 +18,7 @@ export const sellerReducer = createReducer(initialState, {
     state.error = action.payload;
     state.isSeller = false;
   },
-  clearErrors:(state)=>{
-    state.error= null; 
-  }
-
+  clearErrors: (state) => {
+    state.error = null;
+  },
 });

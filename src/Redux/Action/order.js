@@ -46,4 +46,3 @@ export const getAllOrdersOfShop = (shopId) => async (dispatch) => {
     });
   }
 };
-
